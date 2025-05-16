@@ -1,0 +1,548 @@
+[2025-05-16 07:19:56] --- Sync Script Started ---
+[2025-05-16 07:19:56] ✅ CSV file found: C:\IQSync\stock.csv
+[2025-05-16 07:19:56] ✅ CSV Headers: CODE, ONHAND, , , , , , , , , , , , , , , , 
+[2025-05-16 07:19:56] Processing Row #1: SKU '57180' (Raw: '#57180'), Target Stock: 0
+[2025-05-16 07:19:58]    ⚠️ SKU '57180' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:19:58]       (API GET request for SKU '57180' returned an empty array, meaning no product matched)
+[2025-05-16 07:19:58]    ------------------------------------
+[2025-05-16 07:19:58] Processing Row #2: SKU '67173' (Raw: '#67173'), Target Stock: 5
+[2025-05-16 07:19:58]    ⚠️ SKU '67173' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:19:58]       (API GET request for SKU '67173' returned an empty array, meaning no product matched)
+[2025-05-16 07:19:58]    ------------------------------------
+[2025-05-16 07:19:58] Processing Row #3: SKU '91041' (Raw: '#91041'), Target Stock: 10
+[2025-05-16 07:19:59]    ✅ SKU '91041' found in WooCommerce (ID: 2554). Current stock on site: 0
+[2025-05-16 07:20:00]       ➡️ SUCCESS: SKU '91041' stock updated to 10.
+[2025-05-16 07:20:00]    ------------------------------------
+[2025-05-16 07:20:00] Processing Row #4: SKU '98001' (Raw: '#98001'), Target Stock: 4
+[2025-05-16 07:20:00]    ✅ SKU '98001' found in WooCommerce (ID: 2553). Current stock on site: 0
+[2025-05-16 07:20:01]       ➡️ SUCCESS: SKU '98001' stock updated to 4.
+[2025-05-16 07:20:01]    ------------------------------------
+[2025-05-16 07:20:01] Processing Row #5: SKU '3289' (Raw: '3289'), Target Stock: 1
+[2025-05-16 07:20:02]    ⚠️ SKU '3289' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:02]       (API GET request for SKU '3289' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:02]    ------------------------------------
+[2025-05-16 07:20:02] Processing Row #6: SKU '4673' (Raw: '4673'), Target Stock: 1
+[2025-05-16 07:20:02]    ✅ SKU '4673' found in WooCommerce (ID: 2520). Current stock on site: 1
+[2025-05-16 07:20:03]       ➡️ SUCCESS: SKU '4673' stock updated to 1.
+[2025-05-16 07:20:03]    ------------------------------------
+[2025-05-16 07:20:03] Processing Row #7: SKU '0005081/043-12' (Raw: '0005081/043-12'), Target Stock: 0
+[2025-05-16 07:20:04]    ⚠️ SKU '0005081/043-12' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:04]       (API GET request for SKU '0005081/043-12' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:04]    ------------------------------------
+[2025-05-16 07:20:04] Processing Row #8: SKU '6171' (Raw: '6171'), Target Stock: 0
+[2025-05-16 07:20:04]    ⚠️ SKU '6171' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:04]       (API GET request for SKU '6171' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:04]    ------------------------------------
+[2025-05-16 07:20:04] Processing Row #9: SKU '6377' (Raw: '6377'), Target Stock: 0
+[2025-05-16 07:20:05]    ⚠️ SKU '6377' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:05]       (API GET request for SKU '6377' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:05]    ------------------------------------
+[2025-05-16 07:20:05] Processing Row #10: SKU '6533' (Raw: '6533'), Target Stock: 2
+[2025-05-16 07:20:05]    ⚠️ SKU '6533' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:05]       (API GET request for SKU '6533' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:05]    ------------------------------------
+[2025-05-16 07:20:05] Processing Row #11: SKU '001237/051-10' (Raw: '001237/051-10'), Target Stock: 1
+[2025-05-16 07:20:06]    ⚠️ SKU '001237/051-10' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:06]       (API GET request for SKU '001237/051-10' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:06]    ------------------------------------
+[2025-05-16 07:20:06] Processing Row #12: SKU '001237/051-11' (Raw: '001237/051-11'), Target Stock: 6
+[2025-05-16 07:20:06]    ⚠️ SKU '001237/051-11' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:06]       (API GET request for SKU '001237/051-11' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:06]    ------------------------------------
+[2025-05-16 07:20:06] Processing Row #13: SKU '001237/051-12' (Raw: '001237/051-12'), Target Stock: 3
+[2025-05-16 07:20:07]    ⚠️ SKU '001237/051-12' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:07]       (API GET request for SKU '001237/051-12' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:07]    ------------------------------------
+[2025-05-16 07:20:07] Processing Row #14: SKU '001237/051-3' (Raw: '001237/051-3'), Target Stock: 15
+[2025-05-16 07:20:07]    ⚠️ SKU '001237/051-3' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:07]       (API GET request for SKU '001237/051-3' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:07]    ------------------------------------
+[2025-05-16 07:20:07] Processing Row #15: SKU '001237/051-4' (Raw: '001237/051-4'), Target Stock: 15
+[2025-05-16 07:20:08]    ⚠️ SKU '001237/051-4' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:08]       (API GET request for SKU '001237/051-4' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:08]    ------------------------------------
+[2025-05-16 07:20:08] Processing Row #16: SKU '001237/051-5' (Raw: '001237/051-5'), Target Stock: 13
+[2025-05-16 07:20:08]    ⚠️ SKU '001237/051-5' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:08]       (API GET request for SKU '001237/051-5' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:08]    ------------------------------------
+[2025-05-16 07:20:08] Processing Row #17: SKU '001237/051-6' (Raw: '001237/051-6'), Target Stock: 9
+[2025-05-16 07:20:09]    ⚠️ SKU '001237/051-6' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:09]       (API GET request for SKU '001237/051-6' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:09]    ------------------------------------
+[2025-05-16 07:20:09] Processing Row #18: SKU '001237/051-7' (Raw: '001237/051-7'), Target Stock: 0
+[2025-05-16 07:20:10]    ⚠️ SKU '001237/051-7' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:10]       (API GET request for SKU '001237/051-7' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:10]    ------------------------------------
+[2025-05-16 07:20:10] Processing Row #19: SKU '001237/051-8' (Raw: '001237/051-8'), Target Stock: 0
+[2025-05-16 07:20:10]    ⚠️ SKU '001237/051-8' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:10]       (API GET request for SKU '001237/051-8' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:10]    ------------------------------------
+[2025-05-16 07:20:10] Processing Row #20: SKU '001237/051-9' (Raw: '001237/051-9'), Target Stock: 0
+[2025-05-16 07:20:10]    ⚠️ SKU '001237/051-9' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:10]       (API GET request for SKU '001237/051-9' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:10]    ------------------------------------
+[2025-05-16 07:20:10] Processing Row #21: SKU '1430' (Raw: '1430'), Target Stock: 0
+[2025-05-16 07:20:11]    ⚠️ SKU '1430' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:11]       (API GET request for SKU '1430' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:11]    ------------------------------------
+[2025-05-16 07:20:11] Processing Row #22: SKU '1432' (Raw: '1432'), Target Stock: 0
+[2025-05-16 07:20:11]    ⚠️ SKU '1432' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:11]       (API GET request for SKU '1432' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:11]    ------------------------------------
+[2025-05-16 07:20:11] Processing Row #23: SKU '1432858' (Raw: '1432858'), Target Stock: 0
+[2025-05-16 07:20:12]    ✅ SKU '1432858' found in WooCommerce (ID: 2446). Current stock on site: 0
+[2025-05-16 07:20:13]       ➡️ SUCCESS: SKU '1432858' stock updated to 0.
+[2025-05-16 07:20:13]    ------------------------------------
+[2025-05-16 07:20:13] Processing Row #24: SKU '201' (Raw: '201'), Target Stock: 0
+[2025-05-16 07:20:13]    ⚠️ SKU '201' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:13]       (API GET request for SKU '201' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:13]    ------------------------------------
+[2025-05-16 07:20:13] Processing Row #25: SKU '202' (Raw: '202'), Target Stock: 0
+[2025-05-16 07:20:13]    ⚠️ SKU '202' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:13]       (API GET request for SKU '202' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:13]    ------------------------------------
+[2025-05-16 07:20:13] Processing Row #26: SKU '203' (Raw: '203'), Target Stock: 0
+[2025-05-16 07:20:14]    ⚠️ SKU '203' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:14]       (API GET request for SKU '203' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:14]    ------------------------------------
+[2025-05-16 07:20:14] Processing Row #27: SKU '204' (Raw: '204'), Target Stock: 1
+[2025-05-16 07:20:14]    ⚠️ SKU '204' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:14]       (API GET request for SKU '204' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:14]    ------------------------------------
+[2025-05-16 07:20:14] Processing Row #28: SKU '205' (Raw: '205'), Target Stock: 1
+[2025-05-16 07:20:14]    ⚠️ SKU '205' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:14]       (API GET request for SKU '205' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:14]    ------------------------------------
+[2025-05-16 07:20:14] Processing Row #29: SKU '206' (Raw: '206'), Target Stock: 0
+[2025-05-16 07:20:14]    ⚠️ SKU '206' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:14]       (API GET request for SKU '206' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:14]    ------------------------------------
+[2025-05-16 07:20:14] Processing Row #30: SKU '207' (Raw: '207'), Target Stock: 0
+[2025-05-16 07:20:15]    ⚠️ SKU '207' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:15]       (API GET request for SKU '207' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:15]    ------------------------------------
+[2025-05-16 07:20:15] Processing Row #31: SKU '208' (Raw: '208'), Target Stock: 0
+[2025-05-16 07:20:15]    ⚠️ SKU '208' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:15]       (API GET request for SKU '208' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:15]    ------------------------------------
+[2025-05-16 07:20:15] Processing Row #32: SKU '209' (Raw: '209'), Target Stock: 1
+[2025-05-16 07:20:15]    ⚠️ SKU '209' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:15]       (API GET request for SKU '209' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:15]    ------------------------------------
+[2025-05-16 07:20:15] Processing Row #33: SKU '210' (Raw: '210'), Target Stock: 0
+[2025-05-16 07:20:15]    ⚠️ SKU '210' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:15]       (API GET request for SKU '210' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:15]    ------------------------------------
+[2025-05-16 07:20:15] Processing Row #34: SKU '211' (Raw: '211'), Target Stock: 0
+[2025-05-16 07:20:15]    ⚠️ SKU '211' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:15]       (API GET request for SKU '211' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:15]    ------------------------------------
+[2025-05-16 07:20:15] Processing Row #35: SKU '212' (Raw: '212'), Target Stock: 0
+[2025-05-16 07:20:16]    ⚠️ SKU '212' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:16]       (API GET request for SKU '212' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:16]    ------------------------------------
+[2025-05-16 07:20:16] Processing Row #36: SKU '213' (Raw: '213'), Target Stock: 0
+[2025-05-16 07:20:16]    ⚠️ SKU '213' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:16]       (API GET request for SKU '213' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:16]    ------------------------------------
+[2025-05-16 07:20:16] Processing Row #37: SKU '214' (Raw: '214'), Target Stock: 0
+[2025-05-16 07:20:16]    ⚠️ SKU '214' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:16]       (API GET request for SKU '214' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:16]    ------------------------------------
+[2025-05-16 07:20:16] Processing Row #38: SKU '215' (Raw: '215'), Target Stock: 0
+[2025-05-16 07:20:16]    ⚠️ SKU '215' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:16]       (API GET request for SKU '215' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:16]    ------------------------------------
+[2025-05-16 07:20:16] Processing Row #39: SKU '216' (Raw: '216'), Target Stock: 0
+[2025-05-16 07:20:16]    ⚠️ SKU '216' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:16]       (API GET request for SKU '216' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:16]    ------------------------------------
+[2025-05-16 07:20:16] Processing Row #40: SKU '220' (Raw: '220'), Target Stock: 0
+[2025-05-16 07:20:17]    ⚠️ SKU '220' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:17]       (API GET request for SKU '220' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:17]    ------------------------------------
+[2025-05-16 07:20:17] Processing Row #41: SKU '221' (Raw: '221'), Target Stock: 0
+[2025-05-16 07:20:17]    ⚠️ SKU '221' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:17]       (API GET request for SKU '221' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:17]    ------------------------------------
+[2025-05-16 07:20:17] Processing Row #42: SKU '222' (Raw: '222'), Target Stock: 0
+[2025-05-16 07:20:17]    ⚠️ SKU '222' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:17]       (API GET request for SKU '222' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:17]    ------------------------------------
+[2025-05-16 07:20:17] Processing Row #43: SKU '224' (Raw: '224'), Target Stock: 1
+[2025-05-16 07:20:17]    ⚠️ SKU '224' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:17]       (API GET request for SKU '224' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:17]    ------------------------------------
+[2025-05-16 07:20:17] Processing Row #44: SKU '226' (Raw: '226'), Target Stock: 0
+[2025-05-16 07:20:17]    ⚠️ SKU '226' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:17]       (API GET request for SKU '226' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:17]    ------------------------------------
+[2025-05-16 07:20:17] Processing Row #45: SKU '228' (Raw: '228'), Target Stock: 0
+[2025-05-16 07:20:18]    ⚠️ SKU '228' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:18]       (API GET request for SKU '228' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:18]    ------------------------------------
+[2025-05-16 07:20:18] Processing Row #46: SKU '230' (Raw: '230'), Target Stock: 0
+[2025-05-16 07:20:18]    ⚠️ SKU '230' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:18]       (API GET request for SKU '230' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:18]    ------------------------------------
+[2025-05-16 07:20:18] Processing Row #47: SKU '233' (Raw: '233'), Target Stock: 0
+[2025-05-16 07:20:18]    ⚠️ SKU '233' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:18]       (API GET request for SKU '233' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:18]    ------------------------------------
+[2025-05-16 07:20:18] Processing Row #48: SKU '234' (Raw: '234'), Target Stock: 1
+[2025-05-16 07:20:18]    ⚠️ SKU '234' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:18]       (API GET request for SKU '234' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:18]    ------------------------------------
+[2025-05-16 07:20:18] Processing Row #49: SKU '235' (Raw: '235'), Target Stock: 0
+[2025-05-16 07:20:18]    ⚠️ SKU '235' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:18]       (API GET request for SKU '235' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:18]    ------------------------------------
+[2025-05-16 07:20:18] Processing Row #50: SKU '236' (Raw: '236'), Target Stock: 0
+[2025-05-16 07:20:19]    ⚠️ SKU '236' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:19]       (API GET request for SKU '236' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:19]    ------------------------------------
+[2025-05-16 07:20:19] Processing Row #51: SKU '237' (Raw: '237'), Target Stock: 0
+[2025-05-16 07:20:19]    ⚠️ SKU '237' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:19]       (API GET request for SKU '237' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:19]    ------------------------------------
+[2025-05-16 07:20:19] Processing Row #52: SKU '238' (Raw: '238'), Target Stock: 1
+[2025-05-16 07:20:19]    ⚠️ SKU '238' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:19]       (API GET request for SKU '238' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:19]    ------------------------------------
+[2025-05-16 07:20:19] Processing Row #53: SKU '239' (Raw: '239'), Target Stock: 1
+[2025-05-16 07:20:19]    ⚠️ SKU '239' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:19]       (API GET request for SKU '239' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:19]    ------------------------------------
+[2025-05-16 07:20:19] Processing Row #54: SKU '240' (Raw: '240'), Target Stock: 1
+[2025-05-16 07:20:19]    ⚠️ SKU '240' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:19]       (API GET request for SKU '240' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:19]    ------------------------------------
+[2025-05-16 07:20:19] Processing Row #55: SKU '241' (Raw: '241'), Target Stock: 0
+[2025-05-16 07:20:20]    ⚠️ SKU '241' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:20]       (API GET request for SKU '241' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:20]    ------------------------------------
+[2025-05-16 07:20:20] Processing Row #56: SKU '242' (Raw: '242'), Target Stock: 1
+[2025-05-16 07:20:20]    ⚠️ SKU '242' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:20]       (API GET request for SKU '242' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:20]    ------------------------------------
+[2025-05-16 07:20:20] Processing Row #57: SKU '243' (Raw: '243'), Target Stock: 0
+[2025-05-16 07:20:20]    ⚠️ SKU '243' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:20]       (API GET request for SKU '243' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:20]    ------------------------------------
+[2025-05-16 07:20:20] Processing Row #58: SKU '245' (Raw: '245'), Target Stock: 0
+[2025-05-16 07:20:20]    ⚠️ SKU '245' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:20]       (API GET request for SKU '245' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:20]    ------------------------------------
+[2025-05-16 07:20:20] Processing Row #59: SKU '246' (Raw: '246'), Target Stock: 0
+[2025-05-16 07:20:20]    ⚠️ SKU '246' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:20]       (API GET request for SKU '246' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:20]    ------------------------------------
+[2025-05-16 07:20:20] Processing Row #60: SKU '248' (Raw: '248'), Target Stock: 0
+[2025-05-16 07:20:21]    ⚠️ SKU '248' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:21]       (API GET request for SKU '248' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:21]    ------------------------------------
+[2025-05-16 07:20:21] Processing Row #61: SKU '250' (Raw: '250'), Target Stock: 1
+[2025-05-16 07:20:21]    ⚠️ SKU '250' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:21]       (API GET request for SKU '250' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:21]    ------------------------------------
+[2025-05-16 07:20:21] Processing Row #62: SKU '252' (Raw: '252'), Target Stock: 0
+[2025-05-16 07:20:21]    ⚠️ SKU '252' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:21]       (API GET request for SKU '252' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:21]    ------------------------------------
+[2025-05-16 07:20:21] Processing Row #63: SKU '254' (Raw: '254'), Target Stock: 0
+[2025-05-16 07:20:21]    ⚠️ SKU '254' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:21]       (API GET request for SKU '254' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:21]    ------------------------------------
+[2025-05-16 07:20:21] Processing Row #64: SKU '261' (Raw: '261'), Target Stock: 0
+[2025-05-16 07:20:22]    ⚠️ SKU '261' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:22]       (API GET request for SKU '261' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:22]    ------------------------------------
+[2025-05-16 07:20:22] Processing Row #65: SKU '410' (Raw: '410'), Target Stock: 0
+[2025-05-16 07:20:22]    ⚠️ SKU '410' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:22]       (API GET request for SKU '410' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:22]    ------------------------------------
+[2025-05-16 07:20:22] Processing Row #66: SKU '411' (Raw: '411'), Target Stock: 0
+[2025-05-16 07:20:22]    ⚠️ SKU '411' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:22]       (API GET request for SKU '411' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:22]    ------------------------------------
+[2025-05-16 07:20:22] Processing Row #67: SKU '413' (Raw: '413'), Target Stock: 0
+[2025-05-16 07:20:22]    ⚠️ SKU '413' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:22]       (API GET request for SKU '413' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:22]    ------------------------------------
+[2025-05-16 07:20:22] Processing Row #68: SKU '414' (Raw: '414'), Target Stock: 0
+[2025-05-16 07:20:22]    ⚠️ SKU '414' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:22]       (API GET request for SKU '414' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:22]    ------------------------------------
+[2025-05-16 07:20:22] Processing Row #69: SKU '415' (Raw: '415'), Target Stock: 0
+[2025-05-16 07:20:23]    ⚠️ SKU '415' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:23]       (API GET request for SKU '415' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:23]    ------------------------------------
+[2025-05-16 07:20:23] Processing Row #70: SKU '416' (Raw: '416'), Target Stock: 0
+[2025-05-16 07:20:23]    ⚠️ SKU '416' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:23]       (API GET request for SKU '416' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:23]    ------------------------------------
+[2025-05-16 07:20:23] Processing Row #71: SKU '417' (Raw: '417'), Target Stock: 0
+[2025-05-16 07:20:23]    ⚠️ SKU '417' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:23]       (API GET request for SKU '417' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:23]    ------------------------------------
+[2025-05-16 07:20:23] Processing Row #72: SKU '418' (Raw: '418'), Target Stock: 0
+[2025-05-16 07:20:23]    ⚠️ SKU '418' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:23]       (API GET request for SKU '418' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:23]    ------------------------------------
+[2025-05-16 07:20:23] Processing Row #73: SKU '419' (Raw: '419'), Target Stock: 0
+[2025-05-16 07:20:23]    ⚠️ SKU '419' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:23]       (API GET request for SKU '419' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:23]    ------------------------------------
+[2025-05-16 07:20:23] Processing Row #74: SKU '420' (Raw: '420'), Target Stock: 0
+[2025-05-16 07:20:23]    ⚠️ SKU '420' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:23]       (API GET request for SKU '420' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:23]    ------------------------------------
+[2025-05-16 07:20:23] Processing Row #75: SKU '42435' (Raw: '42435'), Target Stock: 1
+[2025-05-16 07:20:24]    ⚠️ SKU '42435' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:24]       (API GET request for SKU '42435' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:24]    ------------------------------------
+[2025-05-16 07:20:24] Processing Row #76: SKU '427' (Raw: '427'), Target Stock: 0
+[2025-05-16 07:20:24]    ⚠️ SKU '427' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:24]       (API GET request for SKU '427' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:24]    ------------------------------------
+[2025-05-16 07:20:24] Processing Row #77: SKU '431' (Raw: '431'), Target Stock: 0
+[2025-05-16 07:20:24]    ⚠️ SKU '431' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:24]       (API GET request for SKU '431' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:24]    ------------------------------------
+[2025-05-16 07:20:24] Processing Row #78: SKU '432' (Raw: '432'), Target Stock: 0
+[2025-05-16 07:20:24]    ⚠️ SKU '432' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:24]       (API GET request for SKU '432' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:24]    ------------------------------------
+[2025-05-16 07:20:24] Processing Row #79: SKU '433' (Raw: '433'), Target Stock: 0
+[2025-05-16 07:20:24]    ⚠️ SKU '433' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:24]       (API GET request for SKU '433' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:24]    ------------------------------------
+[2025-05-16 07:20:24] Processing Row #80: SKU '434' (Raw: '434'), Target Stock: 0
+[2025-05-16 07:20:25]    ⚠️ SKU '434' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:25]       (API GET request for SKU '434' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:25]    ------------------------------------
+[2025-05-16 07:20:25] Processing Row #81: SKU '441' (Raw: '441'), Target Stock: 1
+[2025-05-16 07:20:25]    ⚠️ SKU '441' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:25]       (API GET request for SKU '441' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:25]    ------------------------------------
+[2025-05-16 07:20:25] Processing Row #82: SKU '442' (Raw: '442'), Target Stock: 2
+[2025-05-16 07:20:25]    ⚠️ SKU '442' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:25]       (API GET request for SKU '442' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:25]    ------------------------------------
+[2025-05-16 07:20:25] Processing Row #83: SKU '0047812-ADU-2XL' (Raw: '0047812-ADU-2XL'), Target Stock: 1
+[2025-05-16 07:20:25]    ⚠️ SKU '0047812-ADU-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:25]       (API GET request for SKU '0047812-ADU-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:25]    ------------------------------------
+[2025-05-16 07:20:25] Processing Row #84: SKU '0047812-ADU-L' (Raw: '0047812-ADU-L'), Target Stock: 2
+[2025-05-16 07:20:26]    ⚠️ SKU '0047812-ADU-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:26]       (API GET request for SKU '0047812-ADU-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:26]    ------------------------------------
+[2025-05-16 07:20:26] Processing Row #85: SKU '0047812-ADU-M' (Raw: '0047812-ADU-M'), Target Stock: 2
+[2025-05-16 07:20:26]    ⚠️ SKU '0047812-ADU-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:26]       (API GET request for SKU '0047812-ADU-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:26]    ------------------------------------
+[2025-05-16 07:20:26] Processing Row #86: SKU '0047812-ADU-S' (Raw: '0047812-ADU-S'), Target Stock: 1
+[2025-05-16 07:20:26]    ⚠️ SKU '0047812-ADU-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:26]       (API GET request for SKU '0047812-ADU-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:26]    ------------------------------------
+[2025-05-16 07:20:26] Processing Row #87: SKU '0047812-ADU-XL' (Raw: '0047812-ADU-XL'), Target Stock: 0
+[2025-05-16 07:20:26]    ⚠️ SKU '0047812-ADU-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:26]       (API GET request for SKU '0047812-ADU-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:26]    ------------------------------------
+[2025-05-16 07:20:26] Processing Row #88: SKU '0047812-BER-2XL' (Raw: '0047812-BER-2XL'), Target Stock: 1
+[2025-05-16 07:20:26]    ⚠️ SKU '0047812-BER-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:26]       (API GET request for SKU '0047812-BER-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:26]    ------------------------------------
+[2025-05-16 07:20:26] Processing Row #89: SKU '0047812-BER-L' (Raw: '0047812-BER-L'), Target Stock: 1
+[2025-05-16 07:20:27]    ⚠️ SKU '0047812-BER-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:27]       (API GET request for SKU '0047812-BER-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:27]    ------------------------------------
+[2025-05-16 07:20:27] Processing Row #90: SKU '0047812-BER-M' (Raw: '0047812-BER-M'), Target Stock: 2
+[2025-05-16 07:20:27]    ⚠️ SKU '0047812-BER-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:27]       (API GET request for SKU '0047812-BER-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:27]    ------------------------------------
+[2025-05-16 07:20:27] Processing Row #91: SKU '0047812-BER-S' (Raw: '0047812-BER-S'), Target Stock: 0
+[2025-05-16 07:20:27]    ⚠️ SKU '0047812-BER-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:27]       (API GET request for SKU '0047812-BER-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:27]    ------------------------------------
+[2025-05-16 07:20:27] Processing Row #92: SKU '0047812-BER-XL' (Raw: '0047812-BER-XL'), Target Stock: 2
+[2025-05-16 07:20:27]    ⚠️ SKU '0047812-BER-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:27]       (API GET request for SKU '0047812-BER-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:27]    ------------------------------------
+[2025-05-16 07:20:27] Processing Row #93: SKU '0047812-BLK-2XL' (Raw: '0047812-BLK-2XL'), Target Stock: 0
+[2025-05-16 07:20:28]    ⚠️ SKU '0047812-BLK-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:28]       (API GET request for SKU '0047812-BLK-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:28]    ------------------------------------
+[2025-05-16 07:20:28] Processing Row #94: SKU '0047812-BLK-L' (Raw: '0047812-BLK-L'), Target Stock: 0
+[2025-05-16 07:20:28]    ⚠️ SKU '0047812-BLK-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:28]       (API GET request for SKU '0047812-BLK-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:28]    ------------------------------------
+[2025-05-16 07:20:28] Processing Row #95: SKU '0047812-BLK-M' (Raw: '0047812-BLK-M'), Target Stock: 0
+[2025-05-16 07:20:28]    ⚠️ SKU '0047812-BLK-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:28]       (API GET request for SKU '0047812-BLK-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:28]    ------------------------------------
+[2025-05-16 07:20:28] Processing Row #96: SKU '0047812-BLK-S' (Raw: '0047812-BLK-S'), Target Stock: 0
+[2025-05-16 07:20:28]    ⚠️ SKU '0047812-BLK-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:28]       (API GET request for SKU '0047812-BLK-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:28]    ------------------------------------
+[2025-05-16 07:20:28] Processing Row #97: SKU '0047812-BLK-XL' (Raw: '0047812-BLK-XL'), Target Stock: 0
+[2025-05-16 07:20:28]    ⚠️ SKU '0047812-BLK-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:28]       (API GET request for SKU '0047812-BLK-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:28]    ------------------------------------
+[2025-05-16 07:20:28] Processing Row #98: SKU '0047812-DIJ-2XL' (Raw: '0047812-DIJ-2XL'), Target Stock: 1
+[2025-05-16 07:20:29]    ⚠️ SKU '0047812-DIJ-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:29]       (API GET request for SKU '0047812-DIJ-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:29]    ------------------------------------
+[2025-05-16 07:20:29] Processing Row #99: SKU '0047812-DIJ-L' (Raw: '0047812-DIJ-L'), Target Stock: 1
+[2025-05-16 07:20:29]    ⚠️ SKU '0047812-DIJ-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:29]       (API GET request for SKU '0047812-DIJ-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:29]    ------------------------------------
+[2025-05-16 07:20:29] Processing Row #100: SKU '0047812-DIJ-M' (Raw: '0047812-DIJ-M'), Target Stock: 1
+[2025-05-16 07:20:29]    ⚠️ SKU '0047812-DIJ-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:29]       (API GET request for SKU '0047812-DIJ-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:29]    ------------------------------------
+[2025-05-16 07:20:29] Processing Row #101: SKU '0047812-DIJ-S' (Raw: '0047812-DIJ-S'), Target Stock: 0
+[2025-05-16 07:20:29]    ⚠️ SKU '0047812-DIJ-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:29]       (API GET request for SKU '0047812-DIJ-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:29]    ------------------------------------
+[2025-05-16 07:20:29] Processing Row #102: SKU '0047812-DIJ-XL' (Raw: '0047812-DIJ-XL'), Target Stock: 0
+[2025-05-16 07:20:29]    ⚠️ SKU '0047812-DIJ-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:29]       (API GET request for SKU '0047812-DIJ-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:29]    ------------------------------------
+[2025-05-16 07:20:29] Processing Row #103: SKU '0047812-ELG-2XL' (Raw: '0047812-ELG-2XL'), Target Stock: 1
+[2025-05-16 07:20:30]    ⚠️ SKU '0047812-ELG-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:30]       (API GET request for SKU '0047812-ELG-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:30]    ------------------------------------
+[2025-05-16 07:20:30] Processing Row #104: SKU '0047812-ELG-L' (Raw: '0047812-ELG-L'), Target Stock: 0
+[2025-05-16 07:20:30]    ⚠️ SKU '0047812-ELG-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:30]       (API GET request for SKU '0047812-ELG-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:30]    ------------------------------------
+[2025-05-16 07:20:30] Processing Row #105: SKU '0047812-ELG-M' (Raw: '0047812-ELG-M'), Target Stock: 0
+[2025-05-16 07:20:30]    ⚠️ SKU '0047812-ELG-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:30]       (API GET request for SKU '0047812-ELG-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:30]    ------------------------------------
+[2025-05-16 07:20:30] Processing Row #106: SKU '0047812-ELG-S' (Raw: '0047812-ELG-S'), Target Stock: 0
+[2025-05-16 07:20:30]    ⚠️ SKU '0047812-ELG-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:30]       (API GET request for SKU '0047812-ELG-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:30]    ------------------------------------
+[2025-05-16 07:20:30] Processing Row #107: SKU '0047812-ELG-XL' (Raw: '0047812-ELG-XL'), Target Stock: 2
+[2025-05-16 07:20:30]    ⚠️ SKU '0047812-ELG-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:30]       (API GET request for SKU '0047812-ELG-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:30]    ------------------------------------
+[2025-05-16 07:20:30] Processing Row #108: SKU '0047812-LEM-2XL' (Raw: '0047812-LEM-2XL'), Target Stock: 1
+[2025-05-16 07:20:31]    ⚠️ SKU '0047812-LEM-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:31]       (API GET request for SKU '0047812-LEM-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:31]    ------------------------------------
+[2025-05-16 07:20:31] Processing Row #109: SKU '0047812-LEM-L' (Raw: '0047812-LEM-L'), Target Stock: 2
+[2025-05-16 07:20:31]    ⚠️ SKU '0047812-LEM-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:31]       (API GET request for SKU '0047812-LEM-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:31]    ------------------------------------
+[2025-05-16 07:20:31] Processing Row #110: SKU '0047812-LEM-M' (Raw: '0047812-LEM-M'), Target Stock: 0
+[2025-05-16 07:20:31]    ⚠️ SKU '0047812-LEM-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:31]       (API GET request for SKU '0047812-LEM-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:31]    ------------------------------------
+[2025-05-16 07:20:31] Processing Row #111: SKU '0047812-LEM-S' (Raw: '0047812-LEM-S'), Target Stock: 0
+[2025-05-16 07:20:31]    ⚠️ SKU '0047812-LEM-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:31]       (API GET request for SKU '0047812-LEM-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:31]    ------------------------------------
+[2025-05-16 07:20:31] Processing Row #112: SKU '0047812-LEM-XL' (Raw: '0047812-LEM-XL'), Target Stock: 1
+[2025-05-16 07:20:31]    ⚠️ SKU '0047812-LEM-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:31]       (API GET request for SKU '0047812-LEM-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:31]    ------------------------------------
+[2025-05-16 07:20:31] Processing Row #113: SKU '0047812-LTP-2XL' (Raw: '0047812-LTP-2XL'), Target Stock: 1
+[2025-05-16 07:20:32]    ⚠️ SKU '0047812-LTP-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:32]       (API GET request for SKU '0047812-LTP-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:32]    ------------------------------------
+[2025-05-16 07:20:32] Processing Row #114: SKU '0047812-LTP-L' (Raw: '0047812-LTP-L'), Target Stock: 1
+[2025-05-16 07:20:32]    ⚠️ SKU '0047812-LTP-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:32]       (API GET request for SKU '0047812-LTP-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:32]    ------------------------------------
+[2025-05-16 07:20:32] Processing Row #115: SKU '0047812-LTP-M' (Raw: '0047812-LTP-M'), Target Stock: 2
+[2025-05-16 07:20:33]    ⚠️ SKU '0047812-LTP-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:33]       (API GET request for SKU '0047812-LTP-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:33]    ------------------------------------
+[2025-05-16 07:20:33] Processing Row #116: SKU '0047812-LTP-S' (Raw: '0047812-LTP-S'), Target Stock: 0
+[2025-05-16 07:20:33]    ⚠️ SKU '0047812-LTP-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:33]       (API GET request for SKU '0047812-LTP-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:33]    ------------------------------------
+[2025-05-16 07:20:33] Processing Row #117: SKU '0047812-LTP-XL' (Raw: '0047812-LTP-XL'), Target Stock: 0
+[2025-05-16 07:20:33]    ⚠️ SKU '0047812-LTP-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:33]       (API GET request for SKU '0047812-LTP-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:33]    ------------------------------------
+[2025-05-16 07:20:33] Processing Row #118: SKU '0047812-MAN-2XL' (Raw: '0047812-MAN-2XL'), Target Stock: 1
+[2025-05-16 07:20:33]    ⚠️ SKU '0047812-MAN-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:33]       (API GET request for SKU '0047812-MAN-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:33]    ------------------------------------
+[2025-05-16 07:20:33] Processing Row #119: SKU '0047812-MAN-L' (Raw: '0047812-MAN-L'), Target Stock: 0
+[2025-05-16 07:20:33]    ⚠️ SKU '0047812-MAN-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:33]       (API GET request for SKU '0047812-MAN-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:33]    ------------------------------------
+[2025-05-16 07:20:33] Processing Row #120: SKU '0047812-MAN-M' (Raw: '0047812-MAN-M'), Target Stock: 2
+[2025-05-16 07:20:34]    ⚠️ SKU '0047812-MAN-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:34]       (API GET request for SKU '0047812-MAN-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:34]    ------------------------------------
+[2025-05-16 07:20:34] Processing Row #121: SKU '0047812-MAN-S' (Raw: '0047812-MAN-S'), Target Stock: 0
+[2025-05-16 07:20:34]    ⚠️ SKU '0047812-MAN-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:34]       (API GET request for SKU '0047812-MAN-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:34]    ------------------------------------
+[2025-05-16 07:20:34] Processing Row #122: SKU '0047812-MAN-XL' (Raw: '0047812-MAN-XL'), Target Stock: 0
+[2025-05-16 07:20:34]    ⚠️ SKU '0047812-MAN-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:34]       (API GET request for SKU '0047812-MAN-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:34]    ------------------------------------
+[2025-05-16 07:20:34] Processing Row #123: SKU '0047812-MOC-L' (Raw: '0047812-MOC-L'), Target Stock: 1
+[2025-05-16 07:20:34]    ⚠️ SKU '0047812-MOC-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:34]       (API GET request for SKU '0047812-MOC-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:34]    ------------------------------------
+[2025-05-16 07:20:34] Processing Row #124: SKU '0047812-MOC-S' (Raw: '0047812-MOC-S'), Target Stock: 1
+[2025-05-16 07:20:34]    ⚠️ SKU '0047812-MOC-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:34]       (API GET request for SKU '0047812-MOC-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:34]    ------------------------------------
+[2025-05-16 07:20:34] Processing Row #125: SKU '0047812-MOC-XL' (Raw: '0047812-MOC-XL'), Target Stock: 1
+[2025-05-16 07:20:35]    ⚠️ SKU '0047812-MOC-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:35]       (API GET request for SKU '0047812-MOC-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:35]    ------------------------------------
+[2025-05-16 07:20:35] Processing Row #126: SKU '0047812-MUS-L' (Raw: '0047812-MUS-L'), Target Stock: 0
+[2025-05-16 07:20:35]    ⚠️ SKU '0047812-MUS-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:35]       (API GET request for SKU '0047812-MUS-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:35]    ------------------------------------
+[2025-05-16 07:20:35] Processing Row #127: SKU '0047812-MUS-M' (Raw: '0047812-MUS-M'), Target Stock: 0
+[2025-05-16 07:20:35]    ⚠️ SKU '0047812-MUS-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:35]       (API GET request for SKU '0047812-MUS-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:35]    ------------------------------------
+[2025-05-16 07:20:35] Processing Row #128: SKU '0047812-MUS-S' (Raw: '0047812-MUS-S'), Target Stock: 0
+[2025-05-16 07:20:35]    ⚠️ SKU '0047812-MUS-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:35]       (API GET request for SKU '0047812-MUS-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:35]    ------------------------------------
+[2025-05-16 07:20:35] Processing Row #129: SKU '0047812-NAV-2XL' (Raw: '0047812-NAV-2XL'), Target Stock: 1
+[2025-05-16 07:20:35]    ⚠️ SKU '0047812-NAV-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:35]       (API GET request for SKU '0047812-NAV-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:35]    ------------------------------------
+[2025-05-16 07:20:35] Processing Row #130: SKU '0047812-NAV-L' (Raw: '0047812-NAV-L'), Target Stock: 0
+[2025-05-16 07:20:36]    ⚠️ SKU '0047812-NAV-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:36]       (API GET request for SKU '0047812-NAV-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:36]    ------------------------------------
+[2025-05-16 07:20:36] Processing Row #131: SKU '0047812-NAV-M' (Raw: '0047812-NAV-M'), Target Stock: 0
+[2025-05-16 07:20:36]    ⚠️ SKU '0047812-NAV-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:36]       (API GET request for SKU '0047812-NAV-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:36]    ------------------------------------
+[2025-05-16 07:20:36] Processing Row #132: SKU '0047812-NAV-S' (Raw: '0047812-NAV-S'), Target Stock: 0
+[2025-05-16 07:20:36]    ⚠️ SKU '0047812-NAV-S' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:36]       (API GET request for SKU '0047812-NAV-S' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:36]    ------------------------------------
+[2025-05-16 07:20:36] Processing Row #133: SKU '0047812-NAV-XL' (Raw: '0047812-NAV-XL'), Target Stock: 1
+[2025-05-16 07:20:36]    ⚠️ SKU '0047812-NAV-XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:36]       (API GET request for SKU '0047812-NAV-XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:36]    ------------------------------------
+[2025-05-16 07:20:36] Processing Row #134: SKU '0047812-PLA-2XL' (Raw: '0047812-PLA-2XL'), Target Stock: 0
+[2025-05-16 07:20:36]    ⚠️ SKU '0047812-PLA-2XL' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:36]       (API GET request for SKU '0047812-PLA-2XL' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:36]    ------------------------------------
+[2025-05-16 07:20:36] Processing Row #135: SKU '0047812-PLA-L' (Raw: '0047812-PLA-L'), Target Stock: 0
+[2025-05-16 07:20:37]    ⚠️ SKU '0047812-PLA-L' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:37]       (API GET request for SKU '0047812-PLA-L' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:37]    ------------------------------------
+[2025-05-16 07:20:37] Processing Row #136: SKU '0047812-PLA-M' (Raw: '0047812-PLA-M'), Target Stock: 1
+[2025-05-16 07:20:37]    ⚠️ SKU '0047812-PLA-M' not found in WooCommerce or API response was empty/invalid. Skipped.
+[2025-05-16 07:20:37]       (API GET request for SKU '0047812-PLA-M' returned an empty array, meaning no product matched)
+[2025-05-16 07:20:37]    ------------------------------------
+[2025-05-16 07:20:37] Processing Row #137: SKU '0047812-PLA-S' (Raw: '0047812-PLA-S'), Target Stock: 0
