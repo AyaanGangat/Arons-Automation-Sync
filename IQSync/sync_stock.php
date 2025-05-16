@@ -1,11 +1,11 @@
 <?php
-error_reporting(E_ALL); // Good for debugging
-ini_set('display_errors', 1); // Good for debugging
+error_reporting(E_ALL); // Error Logging
+ini_set('display_errors', 1);
 
 // 🔐 WooCommerce API credentials
-$consumer_key = 'ck_470e44f9b713d1d78115a9d5f7a92c18dba3d6ab'; // Make sure these are your LATEST regenerated keys
-$consumer_secret = 'cs_16dae744e9fb6a2dcbf9586f6c0f68f34fdf50db'; // Make sure these are your LATEST regenerated keys
-$site_url = 'https://arons-test-site.local/wp-json/wc/v3/products'; // HTTPS is correct
+$consumer_key = 'ck_470e44f9b713d1d78115a9d5f7a92c18dba3d6ab';
+$consumer_secret = 'cs_16dae744e9fb6a2dcbf9586f6c0f68f34fdf50db';
+$site_url = 'https://arons-test-site.local/wp-json/wc/v3/products';
 
 // 📂 Path to the IQ CSV export
 $csv_path = 'C:\IQSync\stock.csv'; // Adjust path as needed
