@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 echo "Starting stock sync script (HTTPS Mode)...\n";
 
 // 🔐 WooCommerce API credentials
-$consumer_key = 'ck_5f011719d7cace15bd307f1bfd0243faedd31ebc';s
+$consumer_key = 'ck_5f011719d7cace15bd307f1bfd0243faedd31ebc';
 $consumer_secret = 'cs_86473b1406a2cbf0e3efccfd5babebed0b55be0c';
 $site_url = 'https://arons-test-site.local/wp-json/wc/v3/products';
 
