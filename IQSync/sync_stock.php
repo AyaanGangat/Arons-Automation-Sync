@@ -1,8 +1,23 @@
 <?php
-// --- Error Reporting & Script Start ---
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
-echo "Starting stock sync script (HTTPS Mode)...\n";
+ini_set('display_errors', 0); // Errors will be in HTML report & PHP error log
+ini_set('log_errors', 1);
+// ini_set('error_log', 'C:\IQSync\php_errors.log'); // Optional: dedicated error log for this script
+
+// --- Initialize Report Data ---
+$report_data = [
+    'start_time' => date('Y-m-d H:i:s'),
+    'end_time' => '',
+    'total_processed_csv_rows' => 0, // Will count IQ CSV rows
+    'total_woo_snapshot_rows' => 0,
+    'products_to_update_count' => 0,
+    'successful_updates' => [],
+    'skipped_products' => [], // Array to hold details of skipped products for internal logging if needed
+    'failed_api_calls' => [],
+    'script_errors' => [],
+    'execution_log' => []
+];
+$report_data['execution_log'][] = "Starting stock sync script (HTTPS Mode)...";
 
 // 🔐 WooCommerce API credentials
 $consumer_key = 'ck_5f011719d7cace15bd307f1bfd0243faedd31ebc';
@@ -17,160 +32,381 @@ $woo_snapshot_csv_path = 'C:\Users\ayaan\Local Sites\arons-test-site\app\public\
 
 // --- Load IQ Stock Data ---
 if (!file_exists($iq_csv_path)) {
-    die("❌ IQ CSV file not found at $iq_csv_path\n");
+    $msg = "❌ IQ CSV file not found at $iq_csv_path";
+    $report_data['script_errors'][] = $msg;
+    $report_data['execution_log'][] = $msg;
+    $report_data['end_time'] = date('Y-m-d H:i:s');
+    generate_and_save_sync_report($report_data, 'C:\IQSync\sync_report_last.html');
+    error_log($msg);
+    die();
 }
-echo "✅ IQ CSV file found at $iq_csv_path\n";
+$report_data['execution_log'][] = "✅ IQ CSV file found at $iq_csv_path";
 
 $iq_csv_handle = fopen($iq_csv_path, 'r');
 if ($iq_csv_handle === false) {
-    die("❌ Could not open IQ CSV file.\n");
+    $msg = "❌ Could not open IQ CSV file.";
+    $report_data['script_errors'][] = $msg;
+    $report_data['execution_log'][] = $msg;
+    $report_data['end_time'] = date('Y-m-d H:i:s');
+    generate_and_save_sync_report($report_data, 'C:\IQSync\sync_report_last.html');
+    error_log($msg);
+    die();
 }
-$iq_header = fgetcsv($iq_csv_handle, 0, ",", '"', "\\");
-if ($iq_header === false) {
+$iq_header_raw = fgetcsv($iq_csv_handle, 0, ",", '"', "\\");
+if ($iq_header_raw === false) {
     fclose($iq_csv_handle);
-    die("❌ Could not read header from IQ CSV file or file is empty.\n");
+    $msg = "❌ Could not read header from IQ CSV file or file is empty.";
+    $report_data['script_errors'][] = $msg;
+    $report_data['execution_log'][] = $msg;
+    $report_data['end_time'] = date('Y-m-d H:i:s');
+    generate_and_save_sync_report($report_data, 'C:\IQSync\sync_report_last.html');
+    error_log($msg);
+    die();
 }
+$iq_header = array_map('trim', $iq_header_raw);
 $iq_stock_data = [];
+$iq_rows_processed_count = 0;
 while (($row = fgetcsv($iq_csv_handle, 0, ",", '"', "\\")) !== false) {
+    $iq_rows_processed_count++;
     if (count($iq_header) === count($row)) {
-        $data = @array_combine($iq_header, $row);
+        $data = @array_combine($iq_header, $row); // Use @ to suppress warning on combine failure for this row
         if ($data && isset($data['CODE']) && isset($data['ONHAND'])) {
             $sku = trim(preg_replace('/[^A-Za-z0-9_\-\/]/', '', $data['CODE']));
             if (!empty($sku)) {
-                $iq_stock_data[$sku] = intval($data['ONHAND']);
+                $stock_val_raw = trim($data['ONHAND']);
+                $iq_stock_data[$sku] = ($stock_val_raw === '' || !is_numeric($stock_val_raw)) ? 0 : intval($stock_val_raw);
             }
         } else {
-            // echo "⚠️ Skipping row in IQ CSV due to missing CODE or ONHAND, or column mismatch.\n";
+             $report_data['execution_log'][] = "⚠️ Skipping row $iq_rows_processed_count in IQ CSV due to missing CODE/ONHAND or column mismatch after combine.";
+             $report_data['skipped_products'][] = ['identifier' => "IQ CSV Row $iq_rows_processed_count", 'reason' => "Missing CODE/ONHAND or column mismatch after combine."];
         }
     } else {
-        // echo "⚠️ Skipping row in IQ CSV due to column count mismatch with header.\n";
+         $report_data['execution_log'][] = "⚠️ Skipping row $iq_rows_processed_count in IQ CSV due to column count mismatch with header.";
+         $report_data['skipped_products'][] = ['identifier' => "IQ CSV Row $iq_rows_processed_count", 'reason' => "Column count mismatch with header."];
     }
 }
 fclose($iq_csv_handle);
-echo "✅ Loaded " . count($iq_stock_data) . " products from IQ CSV.\n";
+$report_data['total_processed_csv_rows'] = $iq_rows_processed_count;
+$report_data['execution_log'][] = "✅ Loaded " . count($iq_stock_data) . " unique SKUs with stock from IQ CSV (processed $iq_rows_processed_count rows).";
 
 // --- Load WooCommerce Snapshot Data ---
 if (!file_exists($woo_snapshot_csv_path)) {
-    die("❌ WooCommerce snapshot CSV file not found at $woo_snapshot_csv_path. Run the WordPress snapshot export first.\n");
+    $msg = "❌ WooCommerce snapshot CSV file not found at $woo_snapshot_csv_path. Run the WordPress snapshot export first.";
+    $report_data['script_errors'][] = $msg;
+    $report_data['execution_log'][] = $msg;
+    $report_data['end_time'] = date('Y-m-d H:i:s');
+    generate_and_save_sync_report($report_data, 'C:\IQSync\sync_report_last.html');
+    error_log($msg);
+    die();
 }
-echo "✅ WooCommerce snapshot CSV file found at $woo_snapshot_csv_path\n";
+$report_data['execution_log'][] = "✅ WooCommerce snapshot CSV file found at $woo_snapshot_csv_path";
 
 $woo_csv_handle = fopen($woo_snapshot_csv_path, 'r');
 if ($woo_csv_handle === false) {
-    die("❌ Could not open WooCommerce snapshot CSV file.\n");
+    $msg = "❌ Could not open WooCommerce snapshot CSV file.";
+    $report_data['script_errors'][] = $msg;
+    $report_data['execution_log'][] = $msg;
+    $report_data['end_time'] = date('Y-m-d H:i:s');
+    generate_and_save_sync_report($report_data, 'C:\IQSync\sync_report_last.html');
+    error_log($msg);
+    die();
 }
-$woo_header = fgetcsv($woo_csv_handle, 0, ",", '"', "\\");
-if ($woo_header === false) {
+$woo_header_raw = fgetcsv($woo_csv_handle, 0, ",", '"', "\\");
+if ($woo_header_raw === false) {
     fclose($woo_csv_handle);
-    die("❌ Could not read header from WooCommerce snapshot CSV or file is empty.\n");
+    $msg = "❌ Could not read header from WooCommerce snapshot CSV or file is empty.";
+    $report_data['script_errors'][] = $msg;
+    $report_data['execution_log'][] = $msg;
+    $report_data['end_time'] = date('Y-m-d H:i:s');
+    generate_and_save_sync_report($report_data, 'C:\IQSync\sync_report_last.html');
+    error_log($msg);
+    die();
 }
+$woo_header = array_map('trim', $woo_header_raw);
 $woo_stock_snapshot = [];
 $sku_col_index = array_search('SKU', $woo_header);
-$stock_col_index = array_search('StockQuantity', $woo_header); // Assuming this is the column name in your snapshot
+$stock_col_index = array_search('StockQuantity', $woo_header);
+$name_col_index = array_search('Name', $woo_header);
 
 if ($sku_col_index === false || $stock_col_index === false) {
     fclose($woo_csv_handle);
-    die("❌ 'SKU' or 'StockQuantity' column not found in WooCommerce snapshot CSV header. Check snapshot export settings.\nHeader was: " . implode(', ', $woo_header) . "\n");
+    $msg = "❌ 'SKU' or 'StockQuantity' column not found in WooCommerce snapshot CSV header. Check snapshot export. Header: " . implode(', ', $woo_header);
+    $report_data['script_errors'][] = $msg;
+    $report_data['execution_log'][] = $msg;
+    $report_data['end_time'] = date('Y-m-d H:i:s');
+    generate_and_save_sync_report($report_data, 'C:\IQSync\sync_report_last.html');
+    error_log($msg);
+    die();
 }
 
+$woo_snapshot_rows_count = 0;
 while (($row = fgetcsv($woo_csv_handle, 0, ",", '"', "\\")) !== false) {
+    $woo_snapshot_rows_count++;
     if (isset($row[$sku_col_index]) && isset($row[$stock_col_index])) {
         $sku = trim(preg_replace('/[^A-Za-z0-9_\-\/]/', '', $row[$sku_col_index]));
         if (!empty($sku)) {
             $stock_value_raw = trim($row[$stock_col_index]);
+            $product_name = isset($row[$name_col_index]) ? trim($row[$name_col_index]) : 'N/A';
             if ($stock_value_raw === '' || !is_numeric($stock_value_raw)) {
-                $woo_stock_snapshot[$sku] = null;
+                $woo_stock_snapshot[$sku] = ['stock' => null, 'name' => $product_name];
             } else {
-                $woo_stock_snapshot[$sku] = intval($stock_value_raw);
+                $woo_stock_snapshot[$sku] = ['stock' => intval($stock_value_raw), 'name' => $product_name];
             }
         }
     }
 }
 fclose($woo_csv_handle);
-echo "✅ Loaded " . count($woo_stock_snapshot) . " products from WooCommerce snapshot.\n";
+$report_data['total_woo_snapshot_rows'] = $woo_snapshot_rows_count;
+$report_data['execution_log'][] = "✅ Loaded " . count($woo_stock_snapshot) . " products from WooCommerce snapshot (processed $woo_snapshot_rows_count rows).";
 
 
 // --- Compare and Find Differences ---
 $products_to_update_api = [];
 foreach ($iq_stock_data as $sku => $iq_onhand) {
     if (array_key_exists($sku, $woo_stock_snapshot)) {
-        $woo_current_stock = $woo_stock_snapshot[$sku];
+        $woo_current_stock_data = $woo_stock_snapshot[$sku];
+        $woo_current_stock = $woo_current_stock_data['stock'];
+
         if ($woo_current_stock === null || $iq_onhand !== $woo_current_stock) {
-            // echo "SKU $sku stock changed. IQ: $iq_onhand, Woo Snapshot: " . ($woo_current_stock === null ? 'Not Set/Managed' : $woo_current_stock) . ". Queuing for API update.\n";
-            $products_to_update_api[$sku] = $iq_onhand;
+            $report_data['execution_log'][] = "SKU $sku stock difference found. IQ: $iq_onhand, Woo Snapshot: " . ($woo_current_stock === null ? 'Not Set/Managed' : $woo_current_stock) . ". Queuing for API update.";
+            $products_to_update_api[$sku] = [
+                'new_stock' => $iq_onhand,
+                'current_woo_stock_from_snapshot' => $woo_current_stock,
+                'woo_product_name_from_snapshot' => $woo_current_stock_data['name']
+            ];
+        } else {
+             $report_data['skipped_products'][] = ['identifier' => $sku, 'reason' => "Stock matches between IQ ($iq_onhand) and Woo Snapshot ($woo_current_stock). No API update needed."];
         }
     } else {
-        // echo "SKU $sku found in IQ export but not in Woo snapshot. Skipping (not creating new products via this script).\n";
+        $report_data['skipped_products'][] = ['identifier' => $sku, 'reason' => "SKU found in IQ export but not in current WooCommerce snapshot. This script does not create new products."];
     }
 }
+$report_data['products_to_update_count'] = count($products_to_update_api);
 
 // --- Make Targeted API Calls for Changed Products ---
 if (!empty($products_to_update_api)) {
-    echo "Found " . count($products_to_update_api) . " products to update via API.\n";
-    foreach ($products_to_update_api as $sku_to_update => $new_stock_level) {
-        echo "--------------------------------------------------\n";
-        echo "Processing API update for SKU: $sku_to_update, New Stock: $new_stock_level\n";
+    $report_data['execution_log'][] = "Found " . count($products_to_update_api) . " products to update via API.";
+    foreach ($products_to_update_api as $sku_to_update => $update_details) {
+        $new_stock_level = $update_details['new_stock'];
+        $current_woo_stock_for_report = $update_details['current_woo_stock_from_snapshot'];
+        $woo_product_name_for_report = $update_details['woo_product_name_from_snapshot'];
+
+        $report_data['execution_log'][] = "--------------------------------------------------";
+        $report_data['execution_log'][] = "Processing API update for SKU: $sku_to_update, New Stock: $new_stock_level";
 
         $get_url = $site_url . "?sku=" . urlencode($sku_to_update);
-        echo "🌐 Requesting (GET): $get_url\n";
+        $report_data['execution_log'][] = "🌐 Requesting (GET): $get_url";
         $ch_get = curl_init($get_url);
         curl_setopt($ch_get, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch_get, CURLOPT_USERPWD, "$consumer_key:$consumer_secret");
-        curl_setopt($ch_get, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-        curl_setopt($ch_get, CURLOPT_SSL_VERIFYPEER, false); // For local self-signed HTTPS
-        curl_setopt($ch_get, CURLOPT_SSL_VERIFYHOST, false); // For local self-signed HTTPS
+        curl_setopt($ch_get, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'User-Agent: AronSportSyncScript/1.0']);
+        curl_setopt($ch_get, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch_get, CURLOPT_SSL_VERIFYHOST, false);
         $response_get = curl_exec($ch_get);
         $http_code_get = curl_getinfo($ch_get, CURLINFO_HTTP_CODE);
         $curl_error_get = curl_error($ch_get);
         curl_close($ch_get);
 
-        echo "🧾 API Response (GET) HTTP Code: $http_code_get | cURL Error: $curl_error_get | Body: $response_get\n";
+        $report_data['execution_log'][] = "🧾 API Response (GET) for SKU $sku_to_update - HTTP Code: $http_code_get | cURL Error: $curl_error_get | Body (first 200): " . substr($response_get, 0, 200);
 
         if ($response_get !== false && $http_code_get == 200) {
-            $products = json_decode($response_get, true);
-            if (!empty($products) && isset($products[0]['id'])) {
-                $product_id = $products[0]['id'];
-                echo "Found product ID: $product_id for SKU: $sku_to_update.\n";
+            $products_api_response = json_decode($response_get, true);
+            if (!empty($products_api_response) && isset($products_api_response[0]['id'])) {
+                $product_id = $products_api_response[0]['id'];
+                $live_product_name = isset($products_api_response[0]['name']) ? $products_api_response[0]['name'] : $woo_product_name_for_report;
+                $live_current_stock = isset($products_api_response[0]['stock_quantity']) ? $products_api_response[0]['stock_quantity'] : $current_woo_stock_for_report;
+                $live_manages_stock = isset($products_api_response[0]['manage_stock']) ? $products_api_response[0]['manage_stock'] : false;
+
+
+                $report_data['execution_log'][] = "Found product ID: $product_id for SKU: $sku_to_update (Name: $live_product_name). Live Woo Stock: $live_current_stock. Manages Stock: " . ($live_manages_stock ? 'Yes' : 'No');
 
                 $update_data = [
                     'stock_quantity' => $new_stock_level,
                     'manage_stock' => true
                 ];
                 $put_url = $site_url . "/" . $product_id;
-                echo "🌐 Requesting (PUT): $put_url with data: " . json_encode($update_data) . "\n";
+                $report_data['execution_log'][] = "🌐 Requesting (PUT): $put_url with data: " . json_encode($update_data);
 
                 $ch_put = curl_init($put_url);
                 curl_setopt($ch_put, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch_put, CURLOPT_CUSTOMREQUEST, "PUT");
                 curl_setopt($ch_put, CURLOPT_POSTFIELDS, json_encode($update_data));
                 curl_setopt($ch_put, CURLOPT_USERPWD, "$consumer_key:$consumer_secret");
-                curl_setopt($ch_put, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-                curl_setopt($ch_put, CURLOPT_SSL_VERIFYPEER, false); // For local self-signed HTTPS
-                curl_setopt($ch_put, CURLOPT_SSL_VERIFYHOST, false); // For local self-signed HTTPS
+                curl_setopt($ch_put, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'User-Agent: AronSportSyncScript/1.0']);
+                curl_setopt($ch_put, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch_put, CURLOPT_SSL_VERIFYHOST, false);
                 $result_put = curl_exec($ch_put);
                 $http_code_put = curl_getinfo($ch_put, CURLINFO_HTTP_CODE);
                 $curl_error_put = curl_error($ch_put);
                 curl_close($ch_put);
 
-                echo "🧾 API Response (PUT) HTTP Code: $http_code_put | cURL Error: $curl_error_put | Body: $result_put\n";
+                $report_data['execution_log'][] = "🧾 API Response (PUT) for SKU $sku_to_update - HTTP Code: $http_code_put | cURL Error: $curl_error_put | Body (first 200): " . substr($result_put, 0, 200);
+                
                 if ($result_put !== false && $http_code_put >= 200 && $http_code_put < 300) {
-                    echo "✅ Successfully updated stock for SKU $sku_to_update to $new_stock_level.\n";
+                    $report_data['successful_updates'][] = [
+                        'sku' => $sku_to_update,
+                        'product_name' => $live_product_name,
+                        'old_stock' => $live_current_stock . ($live_manages_stock ? '' : ' (Not Managed)'),
+                        'new_stock' => $new_stock_level
+                    ];
                 } else {
-                    echo "❌ Failed to update stock for SKU $sku_to_update. HTTP Code: $http_code_put. Error: $curl_error_put. Response: $result_put\n";
+                    $report_data['failed_api_calls'][] = [
+                        'sku' => $sku_to_update,
+                        'action' => 'Update Stock (PUT)',
+                        'http_code' => $http_code_put,
+                        'error_message' => $curl_error_put ? $curl_error_put : "HTTP Error $http_code_put",
+                        'response_body' => htmlentities(substr($result_put, 0, 500))
+                    ];
                 }
             } else {
-                echo "⚠️ Product ID not found in API response for SKU $sku_to_update, even though GET was successful. Response: $response_get\n";
-                 if (is_array($products) && empty($products)) {
-                    echo "(API returned an empty array for SKU '$sku_to_update', meaning no product matched this SKU in WooCommerce for the GET request)\n";
+                $reason = "Product ID not found in API GET response for SKU $sku_to_update, even though GET HTTP status was 200.";
+                if (is_array($products_api_response) && empty($products_api_response)) {
+                     $reason .= " (API returned an empty array, meaning no product matched this SKU in WooCommerce for the GET request)";
                 }
+                $report_data['skipped_products'][] = ['identifier' => $sku_to_update, 'reason' => $reason];
             }
-        } else {
-            echo "❌ Error fetching product ID for SKU $sku_to_update. HTTP Code: $http_code_get. Error: $curl_error_get\n";
+        } else { // Failed GET request
+            $report_data['failed_api_calls'][] = [
+                'sku' => $sku_to_update,
+                'action' => 'Fetch Product ID (GET)',
+                'http_code' => $http_code_get,
+                'error_message' => $curl_error_get ? $curl_error_get : "HTTP Error $http_code_get",
+                'response_body' => htmlentities(substr($response_get, 0, 500))
+            ];
         }
     }
 } else {
-    echo "No stock changes detected between IQ export and WooCommerce snapshot that require API updates.\n";
+    $report_data['execution_log'][] = "No stock changes detected between IQ export and WooCommerce snapshot that require API updates.";
 }
 
-echo "🔚 Sync script finished.\n";
+$report_data['end_time'] = date('Y-m-d H:i:s');
+$report_data['execution_log'][] = "Sync processing finished. Generating report...";
+
+$report_file_path = 'C:\IQSync\sync_report_last.html';
+if (generate_and_save_sync_report($report_data, $report_file_path)) {
+    // For CLI confirmation if running manually with pause
+    // echo "HTML Report saved to $report_file_path\n"; 
+} else {
+    // echo "ERROR: Failed to save HTML report.\n";
+}
+
+$report_data['execution_log'][] = "🔚 Main script finished.";
+// This final echo is useful if the .bat file has `pause` and you're running it manually
+// echo "Main sync script has finished. Check " . $report_file_path . " for details.\n";
+
+
+// --- HTML Report Generation Function ---
+function generate_and_save_sync_report(array $report_data, string $output_file_path): bool {
+    $html = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Stock Sync Report</title>";
+    $html .= "<style>
+        body { font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #343a40; font-size: 14px; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 30px auto; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 15px; margin-top: 0; font-size: 26px; font-weight: 600; }
+        h2 { color: #34495e; margin-top: 35px; border-bottom: 1px solid #e9ecef; padding-bottom: 10px; font-size: 20px; font-weight: 500;}
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; font-size: 0.9em; }
+        th, td { border-bottom: 1px solid #dee2e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #3498db; color: white; font-weight: 600; border-top-left-radius: 5px; border-top-right-radius: 5px;}
+        tr:last-child td { border-bottom: none; }
+        tr:nth-child(even) td { background-color: #f8f9fa; }
+        .summary-section { margin-bottom: 30px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 15px; }
+        .summary-item { background-color: #ecf0f1; padding: 15px; border-radius: 5px; text-align: center; }
+        .summary-item strong { display: block; font-size: 24px; color: #2980b9; margin-bottom: 5px; }
+        .summary-item span { font-size: 14px; color: #7f8c8d; }
+        .details-table th { background-color: #5dade2; }
+        .status-icon { margin-right: 8px; font-size: 1.1em; }
+        .success .status-icon { color: #2ecc71; }
+        .failed .status-icon { color: #e74c3c; }
+        .error-message-box { color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; margin-bottom: 25px; border-radius: 5px; }
+        .execution-log-box { margin-top: 25px; padding:15px; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: 5px; max-height: 350px; overflow-y: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; font-size: 0.8em; line-height: 1.5;}
+        .execution-log-box p { margin: 2px 0; word-break: break-all; }
+        .response-body-snippet { font-family: monospace; font-size: 0.85em; white-space: pre-wrap; word-break: break-all; background-color: #f1f3f5; padding: 8px; border: 1px dashed #adb5bd; max-height: 120px; overflow-y: auto; display: block; margin-top: 6px; border-radius: 3px;}
+        .footer { text-align: center; margin-top: 30px; font-size: 0.85em; color: #95a5a6; }
+    </style>";
+    $html .= "</head><body><div class='container'>";
+    $html .= "<h1>Stock Synchronization Report</h1>";
+
+    if (!empty($report_data['script_errors'])) {
+        $html .= "<h2><span class='status-icon failed'>❌</span>Critical Script Errors</h2>";
+        foreach ($report_data['script_errors'] as $err) {
+            $html .= "<p class='error-message-box'>" . htmlspecialchars($err) . "</p>";
+        }
+    }
+
+    $html .= "<div class='summary-section'>";
+    $html .= "<h2><span class='status-icon'></span>Sync Summary</h2>"; // Replaced icon with an emoji
+    $html .= "<p><strong>Last Sync Run:</strong> " . htmlspecialchars($report_data['start_time']) . " to " . htmlspecialchars($report_data['end_time']) . "</p>";
+    $html .= "<div class='summary-grid'>";
+    $html .= "<div class='summary-item'><strong>" . htmlspecialchars($report_data['total_processed_csv_rows']) . "</strong><span>IQ CSV Rows Processed</span></div>";
+    $html .= "<div class='summary-item'><strong>" . htmlspecialchars($report_data['total_woo_snapshot_rows']) . "</strong><span>Woo Snapshot Rows Loaded</span></div>";
+    $html .= "<div class='summary-item'><strong>" . htmlspecialchars($report_data['products_to_update_count']) . "</strong><span>Products Queued for API Update</span></div>";
+    $html .= "<div class='summary-item success'><strong>" . count($report_data['successful_updates']) . "</strong><span>Successful API Updates</span></div>";
+    $html .= "<div class='summary-item skipped'><strong>" . count($report_data['skipped_products']) . "</strong><span>Skipped Items (Not Found/No Change/CSV Error)</span></div>"; // MODIFIED: Now shows count
+    $html .= "<div class='summary-item failed'><strong>" . count($report_data['failed_api_calls']) . "</strong><span>Failed API Calls</span></div>";
+    $html .= "</div></div>";
+
+    if (!empty($report_data['successful_updates'])) {
+        $html .= "<h2><span class='status-icon success'>✔</span>Successful Stock Updates</h2>";
+        $html .= "<table class='details-table'><thead><tr><th>SKU</th><th>Product Name</th><th>Old Stock (Woo Live)</th><th>New Stock (Synced)</th></tr></thead><tbody>";
+        foreach ($report_data['successful_updates'] as $item) {
+            $html .= "<tr>
+                        <td>" . htmlspecialchars($item['sku']) . "</td>
+                        <td>" . htmlspecialchars($item['product_name']) . "</td>
+                        <td>" . htmlspecialchars($item['old_stock']) . "</td>
+                        <td>" . htmlspecialchars($item['new_stock']) . "</td>
+                      </tr>";
+        }
+        $html .= "</tbody></table>";
+    }
+
+    // REMOVED THE DETAILED SKIPPED PRODUCTS TABLE FROM HTML OUTPUT
+    // The count is shown in the summary grid above.
+    // Details are still in $report_data['skipped_products'] if you want to log them elsewhere for debugging.
+    /*
+    // Example: Log skipped details to a text file for developer review
+    if (!empty($report_data['skipped_products'])) {
+        $skipped_log_path = 'C:\IQSync\skipped_details_log_' . date('Ymd') . '.txt';
+        $log_content = "Skipped Products Details - " . $report_data['start_time'] . "\n";
+        foreach($report_data['skipped_products'] as $skipped_item) {
+            $log_content .= "Identifier/SKU: " . $skipped_item['identifier'] . " - Reason: " . $skipped_item['reason'] . "\n";
+        }
+        file_put_contents($skipped_log_path, $log_content, FILE_APPEND);
+    }
+    */
+
+
+    if (!empty($report_data['failed_api_calls'])) {
+        $html .= "<h2><span class='status-icon failed'>❌</span>Failed API Calls</h2>";
+        $html .= "<table class='details-table'><thead><tr><th>SKU</th><th>Action Attempted</th><th>HTTP Code</th><th>Error Details</th><th>API Response (Partial)</th></tr></thead><tbody>";
+        foreach ($report_data['failed_api_calls'] as $item) {
+            $html .= "<tr>
+                        <td>" . htmlspecialchars($item['sku']) . "</td>
+                        <td>" . htmlspecialchars($item['action']) . "</td>
+                        <td>" . htmlspecialchars($item['http_code']) . "</td>
+                        <td>" . htmlspecialchars($item['error_message']) . "</td>
+                        <td><div class='response-body-snippet'>" . $item['response_body'] . "</div></td>
+                      </tr>";
+        }
+        $html .= "</tbody></table>";
+    }
+    
+    if (!empty($report_data['execution_log'])) {
+        $html .= "<h2><span class='status-icon'></span>Detailed Execution Log (for debugging)</h2><div class='execution-log-box'>"; // Replaced icon
+        foreach ($report_data['execution_log'] as $log_msg) {
+            $html .= "<p>" . htmlspecialchars($log_msg) . "</p>";
+        }
+        $html .= "</div>";
+    }
+
+    $html .= "<div class='footer'><p>Report generated on " . date('Y-m-d H:i:s') . "</p></div>";
+    $html .= "</div></body></html>";
+
+    if (file_put_contents($output_file_path, $html) === false) {
+        error_log("Stock Sync Report: CRITICAL ERROR - Failed to write HTML report to $output_file_path. Check permissions.");
+        return false;
+    } else {
+        error_log("Stock Sync Report: HTML report generated successfully: " . $output_file_path);
+        return true;
+    }
+}
 ?>
